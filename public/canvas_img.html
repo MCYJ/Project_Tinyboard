@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CANVAS IMAGE Database Node</title>
+    </head>
+    <body>
+        <div>
+            <canvas id="my_canvas" width="500" height="500"></canvas>
+        </div>
+    </body>
+    <script>
+        const my_canvas = document.getElementById('my_canvas');
+        const ctx = my_canvas.getContext('2d');
+
+        const response = fetch('/getimgfromdb', {
+            method : 'post',
+            headers : {
+                'content-type' : 'application/json'
+            }
+        }).then((res) => res.json())
+        .then(async (res) => {
+            const binary = new Uint8Array(res['result'][0]['img']['data']);
+            const blob = new Blob([binary], {type:'image/jpg'});
+            // empty image 생성
+            const kimg = new Image();
+            // empty image에 blob이 mapping되면서 image생성됨
+            kimg.src = URL.createObjectURL(blob);
+
+            const imgLoadingDone = await kimg.decode();
+            
+            ctx.drawImage(kimg, 0, 0, 400, 400);
+        });
+
+
+    </script>
+</html>
