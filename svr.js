@@ -105,6 +105,7 @@ app.post('/process/login', (req, res) => {
             else {
                 console.dir(result);
                 console.log('로그인 성공');
+                res.cookie('userName', result[0].name);
                 res.writeHead('200', {'Content-Type' : 'text/html; charset=utf8'});
                 res.write(`<h2>${result[0].name} 님 안녕하세요?</h2>`);
                 res.end();
