@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/index.css">
+        
+        <title>Main</title>
+    </head>
+    <body>
+        <div id="signInfoArea"></div>
+        <div>
+            <h1 style="font-style: italic;">JISU</h1>
+            <img src="/img/jisu1.jpg" width="400" height="400"><br>
+            <div id="signArea">
+                <a id="signIn">Sign In</a>
+                <a id="signUp">Sign Up</a>
+            </div>
+        </div>
+        
+    </body>
+    <script>
+        const signInfo = document.getElementById('signInfoArea');
+
+        if (!document.cookie){
+            signInfo.textContent = '';
+        } 
+        else {
+            signInfo.textContent = document.cookie.split('=')[1]+ '님 안녕하세요!';
+        }
+
+        const signArea = document.getElementById('signArea');
+        const signIn = document.getElementById('signIn');
+
+        signIn.addEventListener('click', () => {
+            signArea.innerHTML = 
+                `
+                <h2>Sign in</h2>
+                
+                <div>
+                    <label>ID</label>
+                    <input type='text'>
+                    <br>
+                    <label>PW</label>
+                    <input type='text'>
+                </div>
+                `
+            ;
+        });
+
+    </script>
+</html>
