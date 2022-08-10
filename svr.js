@@ -4,6 +4,7 @@ const mysql = require('mysql2');
 const path = require('path');
 const static = require('serve-static');
 const dbconfig = require('./config/dbconfig.json');
+const cookie = require('cookie');
 
 // connection pool을 활용하여 connection을 재사용함
 // Database connection pool
@@ -20,6 +21,12 @@ const app = express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use('/public', static(path.join(__dirname, 'public')));
+app.use('/img', static(path.join(__dirname, 'img')));
+app.use('/css', static(path.join(__dirname, 'css')));
+
+app.get('/', (req, res) => {
+    res.sendFile('index.html', {root : __dirname});
+});
 
 app.post('/process/adduser', (req, res) => {
     console.log('/process/adduser 호출됨' + req);
