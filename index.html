@@ -32,7 +32,9 @@
 
         const signArea = document.getElementById('signArea');
         const signIn = document.getElementById('signIn');
+        const signUp = document.getElementById('signUp');
 
+        // signIn 클릭시 보여줄 화면 위해 DOM manipulation
         signIn.addEventListener('click', () => {
             signArea.innerHTML = 
                 `
@@ -43,9 +45,31 @@
                     <input type='text'>
                     <br>
                     <label>PW</label>
-                    <input type='text'>
+                    <input type='password'>
                 </div>
                 `
+            ;
+        });
+
+        signUp.addEventListener('click', () => {
+            signArea.innerHTML = 
+            `
+                <h2>Sign Up</h2>
+                
+                <div>
+                    <label>ID</label>
+                    <input type='text'>
+                    <br>
+                    <label>PW</label>
+                    <input type='password'>
+                    <br>
+                    <label>PW 재입력</label>
+                    <input type='password'>
+                    <br>
+                    <label>닉네임</label>
+                    <input type='text'>
+                </div> 
+            `
             ;
         });
 
