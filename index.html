@@ -50,7 +50,14 @@
                 `
             ;
         });
+        signUp.addEventListener('click', () => {
+            fetch('./data/info').then(function(response){
+                response.text().then((data)=>console.log(data))
+            });
+            
+        });
 
+        /*
         signUp.addEventListener('click', () => {
             signArea.innerHTML = 
             `
@@ -72,6 +79,6 @@
             `
             ;
         });
-
+        */
     </script>
 </html>
