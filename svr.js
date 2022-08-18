@@ -23,6 +23,7 @@ app.use(express.json());
 app.use('/public', static(path.join(__dirname, 'public')));
 app.use('/img', static(path.join(__dirname, 'img')));
 app.use('/css', static(path.join(__dirname, 'css')));
+app.use('/data', static(path.join(__dirname, 'data')));
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', {root : __dirname});
