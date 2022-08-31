@@ -6,7 +6,7 @@
         <div>
             <div>
                 <span>
-                    비밀번호를 입력해주세요!
+                    비밀번호를 설정해주세요!
                 </span>
             </div>
             <div>
@@ -17,10 +17,20 @@
             </div>
             <div>
                 <span>
-                    <label id="validationArea" style="color: red;"></label>
+                    <label id="validationArea"><br></label>
                 </span>
             </div>
-            
+            <div>
+                <span>
+                    <label>PW 재입력</label>
+                    <input type="password" id="rePwArea">
+                </span>
+            </div>
+            <div>
+                <span>
+                    <label id="differentArea"><br></label>
+                </span>
+            </div>
         </div>
         
     </body>
@@ -34,9 +44,12 @@
         };
 
         const pwArea = document.getElementById('pwArea');
+        const rePwArea = document.getElementById('rePwArea');
+         
         const validationArea = document.getElementById('validationArea');
+        const differentArea = document.getElementById('differentArea');
 
-        pwArea.addEventListener('keyup', (event) => {
+        pwArea.addEventListener('keyup', () => {
             if(!isLengthOverEight(pwArea.value)){
                 validationArea.innerText = "비밀번호의 길이가 짧습니다!";
                 validationArea.style.color = 'red';
@@ -46,5 +59,17 @@
                 validationArea.style.color = 'green';
             }
         });
+
+        rePwArea.addEventListener('keyup', () => {
+            if (rePwArea.value != pwArea.value){
+                differentArea.innerText = "비밀번호가 일치하지 않습니다!";
+                differentArea.style.color = 'red';
+            }
+            else{
+                differentArea.innerText = "비밀번호가 일치합니다!";
+                differentArea.style.color = 'green';
+            }
+        });
+
     </script>
 </html>
